@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
 
+//JpaSpecificationExecutor<Restaurante> serve para implementar o padrão de Specification no Repositório
+
 @Repository
 public interface RestauranteRepository 
 		extends CustomJpaRepository<Restaurante, Long>, RestauranteRepositoryQueries,

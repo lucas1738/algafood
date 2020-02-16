@@ -27,6 +27,8 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 	@PersistenceContext
 	private EntityManager manager;
 	
+//	TODO: Injetando o próprio repositório na implementação customizada
+//	Só é injetado quando alguém precisa dele. Senão vai dar ficar em um ciclo sem fim
 	@Autowired @Lazy
 	private RestauranteRepository restauranteRepository;
 	
@@ -65,12 +67,16 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 		
 //		TODO: Consulta dinâmica com Criteria Api
 		
+//		antes: return manager.createQuery("from Restaurante", Restaurante.class).getResultList();
 		
+		//precisa: buider, criteria, root, predicates(parameters da query)
 //		instância um builder que vem de manager
 		var builder = manager.getCriteriaBuilder();
+		var criteria = builder.createQuery(Restaurante.class); //ONDE VAI RESOLVER A QUERY
+		var root = criteria.from(Restaurante.class); //ENTIDADE ONDE VAI BUSCAR
 		
-		var criteria = builder.createQuery(Restaurante.class);
-		var root = criteria.from(Restaurante.class);
+//		<named-native-query name="criteria.from(*)"
+//				result-class="createQuery">
 
 		var predicates = new ArrayList<Predicate>();
 		
@@ -86,8 +92,16 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 			predicates.add(builder.lessThanOrEqualTo(root.get("taxaFrete"), taxaFreteFinal));
 		}
 		
-		criteria.where(predicates.toArray(new Predicate[0]));
+//		para construir os parâmetros e adicionar no array de Predicates é necessário uma instância de builder
+//		finalmente faz um where em criteria passando o Predicate -> convertendo para Array (não ArrayList)
 		
+		
+		criteria.where(predicates.toArray(new Predicate[0]));
+//		criteria.where(PREDICATES);
+//		convertendo List to Array: usa to Array na lista e passa de parâmetro um new Array vazio -> [0]
+//		para converter de Array para List: 
+//		ArrayList<Element> arrayList = new ArrayList<Element>(Arrays.asList(array));
+
 		var query = manager.createQuery(criteria);
 		return query.getResultList();
 	}
