@@ -22,6 +22,7 @@ import com.algaworks.algafood.domain.repository.RestauranteRepositoryQueries;
 
 @Repository
 public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
+	
 
 	@PersistenceContext
 	private EntityManager manager;
@@ -32,6 +33,40 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 	@Override
 	public List<Restaurante> find(String nome, 
 			BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
+		
+		//TODO: Consulta dinâmica com JPQL
+		
+//		var jpql = new StringBuilder();
+//		jpql.append("from Restaurante where 0 = 0 ");
+//		if(nome != null) {
+//			jpql.append("and nome like :nome ");
+//		}
+//		if(taxaFreteInicial != null) {
+//			jpql.append("and nome like :nome");
+//		}
+		/*
+		 * manda esse return ai de baixo para um TypedQuery<Restaurante> query para quebrar a QUERY
+		 * var parametros = new HashMap<String, Object>(); => A chave é o nome do parâmetro (String) e o valor é tipo Object
+		 * dentro de cada if vai fazendo parametros.put em vez de setParameter
+		 *  como quebrou a query você tem acesso a ela de fora
+		 * parametros.forEach((chave, valor) -> query.setParametros(chave, valor));
+		 * return query.getResultList();
+		 *  */
+		
+		
+//		return manager.createQuery(jpql.toString(), Restaurante.class)
+//		.setParameter("nome","%" + nome + "%")
+//		.setParameter("taxaInicial",taxaFreteInicial)
+//		.setParameter("taxaFinal",taxaFreteFinal)
+//		.getResultList();
+//		
+		
+//	O StringUtils verifica se não é nulo e não está vazio. Verifica se o length é maior que 0	
+		
+//		TODO: Consulta dinâmica com Criteria Api
+		
+		
+//		instância um builder que vem de manager
 		var builder = manager.getCriteriaBuilder();
 		
 		var criteria = builder.createQuery(Restaurante.class);
