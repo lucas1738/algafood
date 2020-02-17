@@ -14,6 +14,10 @@ import com.algaworks.algafood.domain.model.Restaurante;
 
 //JpaSpecificationExecutor<Restaurante> serve para implementar o padrão de Specification no Repositório
 
+
+//TODO: Customização do repositório base 
+//SimpleJpaRepository é a implementação do JpaRepository
+
 @Repository
 public interface RestauranteRepository 
 		extends CustomJpaRepository<Restaurante, Long>, RestauranteRepositoryQueries,

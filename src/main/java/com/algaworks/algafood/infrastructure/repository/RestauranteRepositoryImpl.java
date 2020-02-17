@@ -28,7 +28,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 	private EntityManager manager;
 	
 //	TODO: Injetando o próprio repositório na implementação customizada
-//	Só é injetado quando alguém precisa dele. Senão vai dar ficar em um ciclo sem fim
+//	Só é injetado quando alguém precisa dele. Senão vai criar uma dependência circular
 	@Autowired @Lazy
 	private RestauranteRepository restauranteRepository;
 	

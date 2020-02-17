@@ -14,6 +14,7 @@ public class CustomJpaRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID>
 
 	private EntityManager manager;
 	
+//	Construtor a partir da Superclasse
 	public CustomJpaRepositoryImpl(JpaEntityInformation<T, ?> entityInformation, 
 			EntityManager entityManager) {
 		super(entityInformation, entityManager);

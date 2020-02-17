@@ -31,4 +31,10 @@ public class Problem {
 		
 	}
 	
+//	TODO: O @Builder substitui o construtor, trazendo outra forma de se construir uma instância do objeto desejado
+	/* Problema problema = Problema.builder()
+	 * .dataHora(LocalDateTime.now())
+	 * .mensagem(e.getMessage()).build();
+	 */
+	
 }
