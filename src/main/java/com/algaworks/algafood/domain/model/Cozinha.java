@@ -33,6 +33,9 @@ public class Cozinha {
 	@Column(nullable = false)
 	private String nome;
 	
+	//TODO: mappedBy indica qual o nome da propriedade usada em Restaurante para fazer o
+	//mapeamento inverso. No caso foi Cozinha cozinha. O dono da associação é  Restaurante,
+	//o lado N do relacionamento.
 	@JsonIgnore
 	@OneToMany(mappedBy = "cozinha")
 	private List<Restaurante> restaurantes = new ArrayList<>();

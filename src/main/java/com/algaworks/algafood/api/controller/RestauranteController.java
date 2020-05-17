@@ -75,6 +75,10 @@ public class RestauranteController {
 		try {
 			Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
 			
+//		TODO: O BeanUtils ignora diversos atributos que pelo falo de não serem enviados
+//			no objeto da requisição vão setar propriedades vazias no objeto desserializado
+//			pelo Jackson
+		
 			BeanUtils.copyProperties(restaurante, restauranteAtual, 
 					"id", "formasPagamento", "endereco", "dataCadastro", "produtos");
 

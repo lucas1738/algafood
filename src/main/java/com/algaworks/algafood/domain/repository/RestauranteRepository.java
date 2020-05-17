@@ -42,3 +42,9 @@ public interface RestauranteRepository
 	Optional<Restaurante> findByCozinha(Cozinha cozinha);
 	
 }
+
+
+//TODO: Resolvendo o problema do N + 1. Quando faz o join em toOne ele faz o fetch
+// automaticamente, mas quando faz o fetch em toMany não faz o fetch automaticamente.
+// Tem que ser adicionada a palavra fetch para obrigar a query a fazer o fetch, fazendo
+// numa única query, numa única consulta sql

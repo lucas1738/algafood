@@ -8,6 +8,12 @@ import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
+
+/* TODO: Um @Embeddable não é uma entidade, é um componente de uma entidade, cujas propriedades são 
+mapeadas para a tabela da entidade. 
+Usado para quebrar uma tabela em 2 classes evitando uma classe muito longa em Java, o que é considerado má prática, um Code Smell
+*/
+
 @Data
 @Embeddable
 public class Endereco {

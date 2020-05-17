@@ -21,8 +21,12 @@ import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.service.CadastroCozinhaService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/cozinhas")
+@Api(tags = "Cozinha")
 public class CozinhaController {
 
 	@Autowired
@@ -32,6 +36,7 @@ public class CozinhaController {
 	private CadastroCozinhaService cadastroCozinha;
 	
 	@GetMapping
+	@ApiOperation("Endpoint para listagem de cozinhas")
 	public List<Cozinha> listar() {
 		return cozinhaRepository.findAll();
 	}
